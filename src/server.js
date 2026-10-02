@@ -1,13 +1,12 @@
-const express = require('express');
-const app = express();
+import express from "express";
+import movieRoutes from "./routes/movieRoutes.js";
 
+const app = express();
 const PORT = 3000;
 
+// API routes
+app.use("/movies", movieRoutes);
 
-// --- GET
-app.get('/hello', (req, res) => {
-    res.json({message: "hello, world"});
-});
 
 // keep the server running
 app.listen(PORT, () => {
