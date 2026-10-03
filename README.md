@@ -1,7 +1,5 @@
-# backend-course
-source: https://www.youtube.com/watch?v=g09PoiCob4Y&t=128s
-
 # Backend Course API
+source: https://www.youtube.com/watch?v=g09PoiCob4Y&t=128s
 
 RESTful API built with Node.js, Express, Prisma ORM, PostgreSQL, and JWT authentication.
 
