@@ -3,8 +3,9 @@ import movieRoutes from "./routes/movieRoutes.js";
 import { config } from "dotenv";
 import { connectDB, disconnectDB } from "./config/db.js";
 
-config();
-connectDB();
+
+config(); // carga las variables de entorno del .env
+connectDB(); // conecta a la base de datos
 
 const app = express();
 const PORT = 3000;
