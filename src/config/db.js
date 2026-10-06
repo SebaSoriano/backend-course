@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client/extension";
+import { PrismaClient } from "@prisma/client";
 
 // si estoy en development, muestra los queries, errores y warnings
 // si estoy en production, muestra los errores

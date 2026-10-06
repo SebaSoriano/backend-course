@@ -1,5 +1,7 @@
 import express from "express";
 import movieRoutes from "./routes/movieRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+
 import { config } from "dotenv";
 import { connectDB, disconnectDB } from "./config/db.js";
 
@@ -12,6 +14,7 @@ const PORT = 3000;
 
 // API routes
 app.use("/movies", movieRoutes);
+app.use("/auth", authRoutes);
 
 
 // keep the server running
