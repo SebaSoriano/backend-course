@@ -12,6 +12,11 @@ connectDB(); // conecta a la base de datos
 const app = express();
 const PORT = 3000;
 
+// Body parsing middlewares
+// para que nodejs pueda leer json
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // API routes
 app.use("/movies", movieRoutes);
 app.use("/auth", authRoutes);
