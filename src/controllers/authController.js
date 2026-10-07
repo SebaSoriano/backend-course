@@ -50,25 +50,21 @@ const register = async (req, res) => {
 
 // check if user email exists in the table
 const login = async (req, res) => {
-    const { email, password } = req.body; // login solo necesita email y contraseña
+    console.log("1. login recibido", req.body);
+    const { email, password } = req.body;
 
-    const user = await prisma.user.findUnique({
-        where: { email: email }, // busca algun user con el email
-    });
+    const user = await prisma.user.findUnique({ where: { email } });
+    console.log("2. user encontrado:", user ? user.id : null);
 
-    if (!user){ // si el user no existe
-        return res.status(401).json({ error: "Invalid email or password" });
-    }
+    if (!user) return res.status(401).json({ error: "Invalid email or password" });
 
-    // verify password
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    if(!isPasswordValid){
-        return res.status(401).json({ error: "Invalid email or password" });
-    }
+    console.log("3. password válida:", isPasswordValid);
 
+    if (!isPasswordValid) return res.status(401).json({ error: "Invalid email or password" });
 
-    // generate JWT token
     const token = generateToken(user.id, res);
+    console.log("4. token generado");
 
 
     // para que el postman devuelva los datos del que se logeo
