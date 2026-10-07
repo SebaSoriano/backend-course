@@ -28,6 +28,10 @@ const register = async (req, res) => {
         },
     });
 
+
+    // generate JWT token
+    const token = generateToken(user.id);
+
     res.status(201).json({
         status: "Success",
         data: {
@@ -36,6 +40,7 @@ const register = async (req, res) => {
                 name: name,
                 email: email,
             },
+            token,
         }, 
     });
     
@@ -63,7 +68,7 @@ const login = async (req, res) => {
 
 
     // generate JWT token
-    const token = generateToken
+    const token = generateToken(user.id);
 
 
     // para que el postman devuelva los datos del que se logeo
